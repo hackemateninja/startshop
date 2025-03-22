@@ -4,17 +4,16 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.2",
+        "php": ">=8.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "php-cs-fixer/shim": "^3.73",
         "symfony/console": "7.2.*",
         "symfony/dotenv": "7.2.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "7.2.*",
         "symfony/runtime": "7.2.*",
         "symfony/yaml": "7.2.*"
-    },
-    "require-dev": {
     },
     "config": {
         "allow-plugins": {
@@ -55,7 +54,10 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+				"fix":[
+					" vendor/bin/php-cs-fixer fix"
+				]
     },
     "conflict": {
         "symfony/symfony": "*"
