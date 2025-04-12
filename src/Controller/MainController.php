@@ -9,10 +9,10 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class MainController extends AbstractController
 {
-    #[Route(path: '/', name: 'home')]
+    #[Route(path: '/', name: 'app_main_homepage')]
     public function homepage(StarshipRepository $starshipRepository): Response
     {
-			  $ships = $starshipRepository->findAll();
+        $ships = $starshipRepository->findAll();
         $myShip = $ships[array_rand($ships)];
 
         return $this->render('main/homepage.html.twig', [
