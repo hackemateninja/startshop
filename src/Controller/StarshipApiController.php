@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/api/starships')]
 class StarshipApiController extends AbstractController
 {
-    #[Route(path: '', name: 'apistarship', methods: ["GET"])]
+    #[Route(path: '', name: 'apistarship', methods: ['GET'])]
     public function getCollection(StarshipRepository $starshipRepository): Response
     {
         $starships = $starshipRepository->findAll();
@@ -18,15 +18,15 @@ class StarshipApiController extends AbstractController
         return $this->json($starships);
     }
 
-    #[Route('/{id<\d+>}', methods: ["GET"])]
+    #[Route('/{id<\d+>}', methods: ['GET'])]
     public function get(int $id, StarshipRepository $starshipRepository): Response
     {
-				$startShip = $starshipRepository->find($id);
+        $startShip = $starshipRepository->find($id);
 
-				if(!$startShip) {
-					throw $this->createNotFoundException("Starship not found");
-				}
+        if (!$startShip) {
+            throw $this->createNotFoundException('Starship not found');
+        }
 
-       	return $this->json($startShip);
+        return $this->json($startShip);
     }
 }

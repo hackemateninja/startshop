@@ -23,8 +23,7 @@ class StarshipRepository
                 'Garden',
                 'Jean-Luc Pickles',
                 StarshipStatusEnum::IN_PROGRESS,
-								new \DateTimeImmutable('2025-01-10')
-								
+                new \DateTimeImmutable('2025-01-10')
             ),
             new Starship(
                 2,
@@ -32,7 +31,7 @@ class StarshipRepository
                 'Latte',
                 'James T. Quick!',
                 StarshipStatusEnum::COMPLETED,
-								new \DateTimeImmutable('2024-12-24')
+                new \DateTimeImmutable('2024-12-24')
             ),
             new Starship(
                 3,
@@ -40,18 +39,19 @@ class StarshipRepository
                 'Delta Tourist',
                 'Kathryn Journeyway',
                 StarshipStatusEnum::WAITING,
-								new \DateTimeImmutable('2025-03-01')
+                new \DateTimeImmutable('2025-03-01')
             ),
         ];
     }
 
-		public function find(int $id): ?Starship
-		{
-			foreach ($this->findAll() as $starship){
-				if ($starship->getId() === $id){
-					return $starship;
-				}
-			}
-			return null;
-		}
+    public function find(int $id): ?Starship
+    {
+        foreach ($this->findAll() as $starship) {
+            if ($starship->getId() === $id) {
+                return $starship;
+            }
+        }
+
+        return null;
+    }
 }
