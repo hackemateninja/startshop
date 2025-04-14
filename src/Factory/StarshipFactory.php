@@ -11,7 +11,6 @@ use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
  */
 final class StarshipFactory extends PersistentProxyObjectFactory
 {
-	
 	private const SHIP_NAMES = [
 		'Nebula Drifter',
 		'Quantum Voyager',
@@ -44,7 +43,7 @@ final class StarshipFactory extends PersistentProxyObjectFactory
 		'Celestial Breeze',
 		'Event Horizon',
 	];
-	
+
 	private const CLASSES = [
 		'Eclipse',
 		'Vanguard',
@@ -57,7 +56,7 @@ final class StarshipFactory extends PersistentProxyObjectFactory
 		'Sentinel',
 		'Odyssey',
 	];
-	
+
 	private const CAPTAINS = [
 		'Orion Stark',
 		'Lyra Voss',
@@ -90,43 +89,44 @@ final class StarshipFactory extends PersistentProxyObjectFactory
 		'Ember Cross',
 		'Vale Shadow',
 	];
-    /**
-     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
-     *
-     * @todo inject services if required
-     */
-    public function __construct()
-    {
-    }
 
-    public static function class(): string
-    {
-        return Starship::class;
-    }
+	/**
+	 * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
+	 *
+	 * @todo inject services if required
+	 */
+	public function __construct()
+	{
+	}
 
-    /**
-     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
-     *
-     * @todo add your default values here
-     */
-    protected function defaults(): array|callable
-    {
-        return [
-            'arrivedAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTimeBetween('-1 year', 'now')),
-            'captain' => self::faker()->randomElement(self::CAPTAINS),
-            'class' => self::faker()->randomElement(self::CLASSES),
-            'name' => self::faker()->randomElement(self::SHIP_NAMES),
-            'status' => self::faker()->randomElement(StarshipStatusEnum::cases()),
-        ];
-    }
+	public static function class(): string
+	{
+		return Starship::class;
+	}
 
-    /**
-     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
-     */
-    protected function initialize(): static
-    {
-        return $this
-            // ->afterInstantiate(function(Starship $starship): void {})
-        ;
-    }
+	/**
+	 * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
+	 *
+	 * @todo add your default values here
+	 */
+	protected function defaults(): array|callable
+	{
+		return [
+			'arrivedAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTimeBetween('-1 year', 'now')),
+			'captain' => self::faker()->randomElement(self::CAPTAINS),
+			'class' => self::faker()->randomElement(self::CLASSES),
+			'name' => self::faker()->randomElement(self::SHIP_NAMES),
+			'status' => self::faker()->randomElement(StarshipStatusEnum::cases()),
+		];
+	}
+
+	/**
+	 * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
+	 */
+	protected function initialize(): static
+	{
+		return $this
+			// ->afterInstantiate(function(Starship $starship): void {})
+		;
+	}
 }
