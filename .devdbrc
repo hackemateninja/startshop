@@ -1,0 +1,6 @@
+[
+  {
+    "type": "sqlite",
+    "path": "/Users/hackemate/Developer/symfony/startshop/var/data.db"
+  }
+]

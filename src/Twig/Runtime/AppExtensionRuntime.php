@@ -9,19 +9,18 @@ use Twig\Extension\RuntimeExtensionInterface;
 class AppExtensionRuntime implements RuntimeExtensionInterface
 {
     public function __construct(
-			private readonly HttpClientInterface $client,
-			private readonly CacheInterface $issLocationPool
-		)
-    {
+        private readonly HttpClientInterface $client,
+        private readonly CacheInterface $issLocationPool,
+    ) {
         // Inject dependencies if needed
     }
 
     public function getIssLocationData()
     {
-			return $this->issLocationPool->get('iss_location_data', function (): array {
-				$response = $this->client->request('GET', 'https://api.wheretheiss.at/v1/satellites/25544');
+        return $this->issLocationPool->get('iss_location_data', function (): array {
+            $response = $this->client->request('GET', 'https://api.wheretheiss.at/v1/satellites/25544');
 
-				return $response->toArray();
-			});
+            return $response->toArray();
+        });
     }
 }
